@@ -37,30 +37,21 @@ class GFG
 
 class Solution
 {
-    public boolean isBipartite(int V, ArrayList<ArrayList<Integer>>adj)
-    {
-        // Code here
+    public boolean isBipartite(int V, ArrayList<ArrayList<Integer>>adj){
         int color[]=new int[V];
         Arrays.fill(color,-1);
         for(int i=0;i<V;i++){
             if(color[i]==-1){
-                if(bfs(i,V,adj,color)==false) return false;
+                if(dfs(i,adj,color,0)==false) return false;;
             }
         }
         return true;
     }
-    private boolean bfs(int node,int V,ArrayList<ArrayList<Integer>>adj,int[]color){
-        Queue<Integer> q=new LinkedList<>();
-        q.add(node);
-        color[node]=0;
-        while(!q.isEmpty()){
-            int curr=q.poll();
-            for(int i:adj.get(curr)){
-                if(color[i]==-1){
-                    color[i]=1-color[curr];
-                    q.add(i);
-                }else if(color[i]==color[curr]) return false;
-            }
+    private boolean dfs(int node,ArrayList<ArrayList<Integer>>adj,int color[],int curColor){
+        color[node]=curColor;
+        for(int i:adj.get(node)){
+            if(color[i]==curColor) return false;
+            if(color[i]==-1) if(dfs(i,adj,color,1-curColor)==false) return false;
         }
         return true;
     }
