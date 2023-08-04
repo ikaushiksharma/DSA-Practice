@@ -35,35 +35,27 @@ class Solution {
     // Function to detect cycle in a directed graph.
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
         // code here
-        int vis[] = new int[V];
-        int pathVis[] = new int[V];
-        
-        for(int i = 0;i<V;i++) {
-            if(vis[i] == 0) {
-                if(dfsCheck(i, adj, vis, pathVis) == true) return true; 
+        int inDegree[]=new int[V];
+        Queue<Integer> q=new LinkedList<>();
+        for(int i=0;i<V;i++){
+            for(int node:adj.get(i)){
+                inDegree[node]++;
             }
         }
-        return false; 
-    }
-    private boolean dfsCheck(int node, ArrayList<ArrayList<Integer>> adj, int vis[], int pathVis[]) {
-        vis[node] = 1; 
-        pathVis[node] = 1; 
-        
-        // traverse for adjacent nodes 
-        for(int it : adj.get(node)) {
-            // when the node is not visited 
-            if(vis[it] == 0) {
-                if(dfsCheck(it, adj, vis, pathVis) == true) 
-                    return true; 
-            }
-            // if the node has been previously visited
-            // but it has to be visited on the same path 
-            else if(pathVis[it] == 1) {
-                return true; 
+        for(int i=0;i<V;i++){
+            if(inDegree[i]==0) q.add(i);
+        }
+        int i=0;
+        int res[]=new int[V];
+        while(!q.isEmpty()){
+            int node=q.poll();
+            res[i++]=node;
+            for(int adjacent:adj.get(node)){
+                inDegree[adjacent]--;
+                if(inDegree[adjacent]==0) q.add(adjacent);
             }
         }
-        
-        pathVis[node] = 0; 
-        return false; 
+        return i!=V;
     }
+    
 }
