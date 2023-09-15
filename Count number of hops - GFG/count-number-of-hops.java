@@ -43,18 +43,15 @@ class Solution
     static long countWays(int n)
     {
         long dp[]=new long[n+1];
-        Arrays.fill(dp,-1);
-        return helper(n,dp);
+        dp[0]=1;
+        for(int i=1;i<=n;i++){
+            long  op1=0,op2=0,op3=0;
+            if(i>=1) op1=dp[i-1];
+            if(i>=2) op2=dp[i-2];
+            if(i>=3) op3=dp[i-3];
+            dp[i]=(op1+op2+op3)%mod;
+        }
+        return dp[n];
     }
-    static long helper(int n,long dp[]){
-        if(n==0) return 1;
-        if(dp[n]!=-1) return dp[n];
-        long  op1=0,op2=0,op3=0;
-        if(n>=1) op1=helper(n-1,dp);
-        if(n>=2) op2=helper(n-2,dp);
-        if(n>=3) op3=helper(n-3,dp);
-        return dp[n]=(op1+op2+op3)%mod;
-    }
-    
 }
 
