@@ -129,20 +129,19 @@ class Node
 
 class Tree
 {
-    
+    int hDiff=Integer.MIN_VALUE;
     //Function to check whether a binary tree is balanced or not.
     boolean isBalanced(Node root){
 	// Your code here
-	    return helper(root)==-1?false:true;
+	    helper(root);
+	    return hDiff<=1;
     }
-    int helper(Node node){
-        if(node==null) return 0;
-        int lh=helper(node.left);
-        if(lh==-1) return -1;
-        int rh=helper(node.right);
-        if(rh==-1) return -1;
-        if(Math.abs(lh-rh)>1) return -1;
-        return Math.max(lh,rh)+1;
+    private int helper(Node root){
+        if(root==null) return 0;
+        int l=helper(root.left);
+        int r=helper(root.right);
+        hDiff=Math.max(Math.abs(l-r),hDiff);
+        return Math.max(l,r)+1;
     }
 }
 
