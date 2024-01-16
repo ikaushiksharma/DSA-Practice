@@ -1,18 +1,22 @@
 class Solution {
     public long minimalKSum(int[] nums, int k) {
         Arrays.sort(nums);
-        Set<Integer> set = new HashSet<>();
+        int prev = -1; // !!
         long sum = 0;
-        long cnt=k;
-        for (int num : nums) {
-            if (!set.contains(num) && num <= (int)cnt) {
-                cnt++;
-                sum += num;
-            }
-            set.add(num);
 
+        for (int num : nums) {
+            if (prev == num)
+                continue; // !!
+            if (num <= k) {
+                k++;
+                sum += num;
+            } else {
+                break;
+            }
+            prev = num; // !!
         }
-        long res = (long) ((cnt * (cnt + 1)) / 2) - sum;
+
+        long res = (long) (1 + k) * k / 2 - sum;
         return res;
     }
 }
