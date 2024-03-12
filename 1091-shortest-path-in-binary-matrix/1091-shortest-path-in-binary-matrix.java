@@ -1,45 +1,36 @@
 class Solution {
-    class Pair {
-        int x;
-        int y;
-
-        Pair(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
     public int shortestPathBinaryMatrix(int[][] grid) {
-        if(grid==null || grid.length==0 || grid[0].length==0){
-            return -1;
-        }
-
-        int[][] dirs = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 1 }, { 1, -1 }, { 1, 0 }, { 1, 1 } };
-        Queue<Pair> q = new LinkedList<>();
         int n = grid.length;
-        int m = grid[0].length;
-        if(grid[0][0]==1 || grid[n-1][m-1]==1){
+        if (grid[0][0] == 1 || grid[n - 1][n - 1] == 1)
             return -1;
-        }
-        boolean vis[][] = new boolean[n][m];
-        vis[0][0] = true;
-        q.add(new Pair(0, 0));
-        int ans = 0;
+
+        Queue<int[]> q = new LinkedList<>();
+        q.offer(new int[] { 0, 0 });
+        int cnt = 0;
         while (!q.isEmpty()) {
-            ans++;
-            for (int i = 0; i < q.size(); i++) {
-                Pair node = q.poll();
-                if(node.x==n-1 && node.y==m-1) return ans;
-                for (int[] dir : dirs) {
-                    int row = node.x + dir[0];
-                    int col = node.y + dir[1];
-                    if (row < n && row >= 0 && col < m && col >= 0 && vis[row][col] == false && grid[row][col] == 0) {
-                        q.offer(new Pair(row, col));
-                        vis[row][col] = true;
+            cnt++;
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                int[] cur = q.poll();
+                int x = cur[0];
+                int y = cur[1];
+                if (x == n - 1 && y == n - 1)
+                    return cnt;
+                for (int j = -1; j < 2; j++) {
+                    for (int k = -1; k < 2; k++) {
+                        if (j == 0 && k == 0)
+                            continue;
+                        int r = x + j;
+                        int c = y + k;
+                        if (r < 0 || r > n - 1 || c < 0 || c > n - 1 || grid[r][c] != 0)
+                            continue;
+                        grid[r][c] = 2;
+                        q.offer(new int[] { r, c });
                     }
                 }
             }
         }
+
         return -1;
     }
 }
