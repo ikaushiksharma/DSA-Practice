@@ -1,17 +1,16 @@
 class Solution {
     public boolean judgeSquareSum(int c) {
-        long lo = 0;
-        long hi = (int) Math.ceil(Math.sqrt(c));
-        while (lo <= hi) {
-            long mid = (lo * lo) + (hi * hi);
-            if (mid == c)
-                return true;
-            if (mid < c) {
-                lo++;
-            } else {
-                hi--;
+        for (int i = 2; i * i <= c; i++) {
+            if (c % i == 0) {
+                int count = 0;
+                while (c % i == 0) {
+                    count++;
+                    c /= i;
+                }
+                if (i % 4 == 3 && count % 2 != 0)
+                    return false;
             }
         }
-        return false;
+        return c % 4 != 3;
     }
 }
