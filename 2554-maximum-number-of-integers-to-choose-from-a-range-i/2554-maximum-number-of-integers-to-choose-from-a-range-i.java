@@ -6,10 +6,13 @@ class Solution {
         int sum = 0;
         int cnt = 0;
         int i = 1;
-        while (sum + i < maxSum && i <= n) {
+        while (i <= n) {
             if (!set.contains(i)) {
                 sum += i;
-                cnt++;
+                if (sum <= maxSum)
+                    cnt++;
+                else
+                    break;
             }
             i++;
         }
