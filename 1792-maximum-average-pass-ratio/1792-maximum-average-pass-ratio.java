@@ -1,6 +1,6 @@
 class Solution {
     public double maxAverageRatio(int[][] classes, int extraStudents) {
-        PriorityQueue<ClassRecord> pq = new PriorityQueue<>(new Compare());
+        PriorityQueue<ClassRecord> pq = new PriorityQueue<>((ClassRecord a,ClassRecord b)-> Double.compare(b.inc,a.inc));
 
         for (int[] cl : classes)
             pq.add(new ClassRecord(cl));
@@ -39,16 +39,5 @@ class ClassRecord {
 
     private double getIncrement() {
         return (pass + 1.0) / (total + 1) - (double) pass / total;
-    }
-}
-
-class Compare implements Comparator<ClassRecord> {
-    public int compare(ClassRecord a, ClassRecord b) {
-        if (a.inc < b.inc)
-            return 1;
-        else if (a.inc > b.inc)
-            return -1;
-        else
-            return 0;
     }
 }
