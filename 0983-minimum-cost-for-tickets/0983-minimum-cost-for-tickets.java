@@ -1,21 +1,20 @@
 class Solution {
     public int mincostTickets(int[] days, int[] costs) {
-        Queue<int[]> last7 = new LinkedList<>();
-        Queue<int[]> last30 = new LinkedList<>();
-        int cost = 0;
+        int memo[][] = new int[days.length][400];
+        for (int m[] : memo)
+            Arrays.fill(m, -1);
+        return helper(days, costs, memo, 0, 0);
+    }
 
-        for (int d : days) {
-            while (!last7.isEmpty() && last7.peek()[0] + 7 <= d) {
-                last7.poll();
-            }
-            while (!last30.isEmpty() && last30.peek()[0] + 30 <= d) {
-                last30.poll();
-            }
-            last7.offer(new int[]{d, cost + costs[1]});
-            last30.offer(new int[]{d, cost + costs[2]});
-            cost = Math.min(cost + costs[0], Math.min(last7.peek()[1], last30.peek()[1]));
-        }
+    private int helper(int days[], int cost[], int memo[][], int i, int reach) {
+        if (i == days.length)
+            return 0;
+        if (memo[i][reach] != -1)
+            return memo[i][reach];
 
-        return cost;
+        return memo[i][reach] = days[i] > reach ? Math.min(cost[0] + helper(days, cost, memo, i + 1, days[i]),
+                Math.min(cost[1] + helper(days, cost, memo, i + 1, days[i] + 6),
+                        cost[2] + helper(days, cost, memo, i + 1, days[i] + 29)))
+                : helper(days, cost, memo, i + 1, reach);
     }
 }
