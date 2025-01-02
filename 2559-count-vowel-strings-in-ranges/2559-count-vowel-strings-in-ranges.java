@@ -9,7 +9,6 @@ class Solution {
                 prefixArr[i+1]++;
             }
         }
-        System.out.println(Arrays.toString(prefixArr));
         int res[]=new int[queries.length];
         for(int i=0;i<queries.length;i++){
             res[i]=prefixArr[queries[i][1]+1]-prefixArr[queries[i][0]];
@@ -25,6 +24,7 @@ class Solution {
                 firstVowel = true;
             if (c == word.charAt(word.length() - 1))
                 lastVowel = true;
+            if(firstVowel && lastVowel) return true;
         }
         return firstVowel && lastVowel;
     }
