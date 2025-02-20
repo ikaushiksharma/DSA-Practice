@@ -1,23 +1,31 @@
 class Solution {
     public String findDifferentBinaryString(String[] nums) {
-        HashSet<String> numSet=new HashSet<>();
-        for(String s:nums){
-            numSet.add(s);
+        Arrays.sort(nums);
+        int len = nums.length;
+        int n = nums[0].length();
+        int maxNum = 1 << n;
+        for (int i = len - 1; i >= 0 && maxNum-- >= 0; i--) {
+            if (binaryToInt(nums[i]) != maxNum) {
+                return intToBinary(maxNum);
+            }
         }
-        int n=nums.length;
-        int pow=(int)(Math.pow(2,n));
-        for(int i=0;i<pow;i++){
-            String sb=binaryOfLen(i,n);
-            if(!numSet.contains(sb)) return sb;
-        }
-        return "-1";
+        return "";
     }
-    private String binaryOfLen(int num,int len){
-        StringBuilder sb=new StringBuilder();
-        while(len-->0){
-            sb.append(num%2);
-            num/=2;
+
+    private int binaryToInt(String n) {
+        int res = 0;
+        for (char c : n.toCharArray()) {
+            res = res * 2 + (c - '0');
         }
-        return sb.toString();
+        return res;
+    }
+
+    private String intToBinary(int n) {
+        StringBuilder sb = new StringBuilder();
+        while (n > 0) {
+            sb.append(n & 1);
+            n = n >> 1;
+        }
+        return sb.reverse().toString();
     }
 }
