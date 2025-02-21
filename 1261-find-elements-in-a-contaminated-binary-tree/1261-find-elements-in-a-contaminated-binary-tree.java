@@ -14,10 +14,10 @@
  * }
  */
 class FindElements {
-    HashSet<Integer> set;
+    HashSet<Integer> set=new HashSet<>();
     public FindElements(TreeNode root) {
-        this.set=new HashSet<>();
-        this.helper(root,0);
+        
+        helper(root,0);
     }
     
     public boolean find(int target) {
