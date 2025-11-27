@@ -1,14 +1,14 @@
 class Solution {
+    final String PREV="../";
+    final String SAME="./";
     public int minOperations(String[] logs) {
-        int res = 0;
-        for (String log : logs) {
-            if (log.equals("../")) {
-                if (res > 0)
-                    res--;
-            }
-            else if (!log.equals("./"))
-                res++;
+        int level=0;
+        for(int i=0;i<logs.length;i++){
+            String curr=logs[i];
+            if(curr.equals(SAME)) continue;
+            if(curr.equals(PREV)) level=Math.max(0,level-1);
+            else level++;
         }
-        return res;
+        return level;
     }
 }
