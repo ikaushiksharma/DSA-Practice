@@ -1,35 +1,38 @@
 class Solution {
     public int maximizeSquareArea(int m, int n, int[] hFences, int[] vFences) {
-        Set<Integer> hEdges=getEdges(hFences,m);
-        Set<Integer> vEdges=getEdges(vFences,n);
-        long res=0;
-        for(int e:hEdges){
-            if(vEdges.contains(e)){
-                res=Math.max(res,e);
-            }
-        }
-        if(res==0) return -1;
-        return (int)((res*res)%1000000007);
-    }
+        List<Integer> hList = new ArrayList<>();
+        for (int h : hFences) hList.add(h);
+        hList.add(1);
+        hList.add(m);
 
-    private Set<Integer> getEdges(int fences[], int border) {
-        Set<Integer> set = new HashSet<>();
-        List<Integer> list = new ArrayList<>();
+        List<Integer> vList = new ArrayList<>();
+        for (int v : vFences) vList.add(v);
+        vList.add(1);
+        vList.add(n);
 
-        for (int fence : fences) {
-            list.add(fence);
-        }
+        Set<Integer> stt = new HashSet<>();
+        long ans = 0;
 
-        list.add(1);
-        list.add(border);
-        Collections.sort(list);
-
-        for(int i=0;i<list.size();i++){
-            for(int j=i+1;j<list.size();j++){
-                set.add(list.get(j)-list.get(i));
+        for (int i = 0; i < hList.size(); i++) {
+            for (int j = i + 1; j < hList.size(); j++) {
+                stt.add(Math.abs(hList.get(j) - hList.get(i)));
             }
         }
 
-        return set;
+        for (int i = 0; i < vList.size(); i++) {
+            for (int j = i + 1; j < vList.size(); j++) {
+                int val = Math.abs(vList.get(j) - vList.get(i));
+                if (stt.contains(val)) {
+                    ans = Math.max(ans, val);
+                }
+            }
+        }
+
+        if (ans == 0) {
+            return -1;
+        }
+
+        long MOD = 1_000_000_007;
+        return (int) ((ans * ans) % MOD);
     }
 }
