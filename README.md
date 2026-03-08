@@ -11,6 +11,7 @@ This repository serves as a collection of solutions to various problems from Lee
 | ------- | ------- |
 | [1536-minimum-swaps-to-arrange-a-binary-grid](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1536-minimum-swaps-to-arrange-a-binary-grid/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
+| [1980-find-unique-binary-string](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1980-find-unique-binary-string/) | Medium |
 ## Greedy
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -26,6 +27,7 @@ This repository serves as a collection of solutions to various problems from Lee
 | [1545-find-kth-bit-in-nth-binary-string](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1545-find-kth-bit-in-nth-binary-string/) | Medium |
 | [1758-minimum-changes-to-make-alternating-binary-string](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1758-minimum-changes-to-make-alternating-binary-string/) | Easy |
 | [1784-check-if-binary-string-has-at-most-one-segment-of-ones](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1784-check-if-binary-string-has-at-most-one-segment-of-ones/) | Easy |
+| [1980-find-unique-binary-string](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1980-find-unique-binary-string/) | Medium |
 ## Recursion
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -34,4 +36,12 @@ This repository serves as a collection of solutions to various problems from Lee
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1545-find-kth-bit-in-nth-binary-string](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1545-find-kth-bit-in-nth-binary-string/) | Medium |
+## Hash Table
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1980-find-unique-binary-string](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1980-find-unique-binary-string/) | Medium |
+## Backtracking
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1980-find-unique-binary-string](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1980-find-unique-binary-string/) | Medium |
 <!---LeetCode Topics End-->
