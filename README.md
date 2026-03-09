@@ -44,4 +44,12 @@ This repository serves as a collection of solutions to various problems from Lee
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1980-find-unique-binary-string](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1980-find-unique-binary-string/) | Medium |
+## Dynamic Programming
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3129-find-all-possible-stable-binary-arrays-i](https://github.com/ikaushiksharma/DSA-Practice/tree/main/3129-find-all-possible-stable-binary-arrays-i/) | Medium |
+## Prefix Sum
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3129-find-all-possible-stable-binary-arrays-i](https://github.com/ikaushiksharma/DSA-Practice/tree/main/3129-find-all-possible-stable-binary-arrays-i/) | Medium |
 <!---LeetCode Topics End-->
