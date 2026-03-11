@@ -52,4 +52,8 @@ This repository serves as a collection of solutions to various problems from Lee
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3129-find-all-possible-stable-binary-arrays-i](https://github.com/ikaushiksharma/DSA-Practice/tree/main/3129-find-all-possible-stable-binary-arrays-i/) | Medium |
+## Bit Manipulation
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1009-complement-of-base-10-integer](https://github.com/ikaushiksharma/DSA-Practice/tree/main/1009-complement-of-base-10-integer/) | Easy |
 <!---LeetCode Topics End-->
